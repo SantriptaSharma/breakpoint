@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 namespace SantriptaSharma.Breakpoint.Game
@@ -21,6 +22,7 @@ namespace SantriptaSharma.Breakpoint.Game
         private float lastPickup;
         private Weapon weapon;
         private Item power;
+        private bool constrainVelocity;
 
         private UIController ui;
 
@@ -48,6 +50,7 @@ namespace SantriptaSharma.Breakpoint.Game
             rb.mass = 1;
             targetDirection = new Vector3();
             accelerationMagnitude = Mathf.Abs(topSpeed / timeToTopSpeed);
+            constrainVelocity = true;
 
             ui = UIController.instance;
         }
@@ -59,7 +62,7 @@ namespace SantriptaSharma.Breakpoint.Game
 
             rb.AddForce(targetDirection * accelerationMagnitude);
             
-            if(rb.velocity.sqrMagnitude > topSpeed * topSpeed)
+            if(rb.velocity.sqrMagnitude > topSpeed * topSpeed && constrainVelocity)
             {
                 rb.velocity = rb.velocity.normalized * topSpeed;
             }
@@ -126,6 +129,18 @@ namespace SantriptaSharma.Breakpoint.Game
             {
                 if(lastPickup + pickupDelay <= Time.time) EquipItem(collision.gameObject);
             }
+        }
+
+        private IEnumerator StopLimitingVelocityFor(float seconds)
+        {
+            constrainVelocity = false;
+            yield return new WaitForSecondsRealtime(seconds);
+            constrainVelocity = true;
+        }
+
+        public void StopLimitingVelocity(float seconds)
+        {
+            StartCoroutine(StopLimitingVelocityFor(seconds));
         }
 
         public void AddForce(Vector2 force)

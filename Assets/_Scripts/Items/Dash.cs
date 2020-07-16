@@ -9,7 +9,7 @@ namespace SantriptaSharma.Breakpoint.Items
     public class Dash : Item
     {
         public DashType dashType;
-        public float forceMagnitude;
+        public float forceMagnitude, dashTime;
 
         private Player player;
 
@@ -17,6 +17,8 @@ namespace SantriptaSharma.Breakpoint.Items
         {
             if (currentTime > 0) return;
             player.AddForce(dashType == DashType.Aim ? player.aimDirection * forceMagnitude : player.moveDirection * forceMagnitude);
+            player.StopLimitingVelocity(dashTime);
+            PlayerCamera.instance.DoScreenShake(0.15f, 0.5f, 5f);
             currentTime = cooldown;
         }
 

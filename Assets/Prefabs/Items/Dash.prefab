@@ -125,6 +125,7 @@ MonoBehaviour:
   itemSprite: {fileID: 5312172914408531601, guid: b7a51230acbce8a4c877f3d4f25cf994,
     type: 3}
   type: 1
-  cooldown: 8
-  dashType: 0
-  forceMagnitude: 200
+  cooldown: 2
+  dashType: 1
+  forceMagnitude: 400
+  dashTime: 0.8
