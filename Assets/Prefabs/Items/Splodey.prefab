@@ -46,12 +46,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daa8bce38a258fe41bf829b5410025b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 4665291626472035655, guid: d4dd818f0858a17418e19fc345d3d602, type: 3}
+  bullet: {fileID: 7991166996671669684, guid: 8704904b401fab24fab7cbe00e0da733, type: 3}
   sprite: {fileID: 4665291626561411918}
-  count: 4
-  frequencyIncreasePerSecond: 0.1
-  startingFrequency: 0.2
-  lifeTime: 5
+  count: 24
+  frequencyIncreasePerSecond: 0.5
+  startingFrequency: 0.3
+  lifeTime: 3.3
   size: 1
   maxSize: 1.6
   shardVelocity: 24
@@ -86,8 +86,8 @@ CircleCollider2D:
   m_GameObject: {fileID: 4665291626472035655}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 6200000, guid: f5e80e9ac534b0a4e95351f09654293a, type: 2}
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

@@ -7,6 +7,7 @@ namespace SantriptaSharma.Breakpoint.Items
 { 
     public class Peashooter : Weapon
     {
+        public float separation;
         public float kickForce;
         private Player player;
 
@@ -15,7 +16,7 @@ namespace SantriptaSharma.Breakpoint.Items
             if (currentTime > 0) return;
 
             Vector3 dir = player.aimDirection;
-            var o = Instantiate(projectile, transform.position, Quaternion.identity);
+            var o = Instantiate(projectile, transform.position + dir * separation, Quaternion.identity);
             o.GetComponent<Rigidbody2D>().velocity = dir * shootVelocity;
             player.AddForce(dir * kickForce * -1);
             PlayerCamera.instance.DoScreenShake(0.2f, 0.03f, 0.5f);
