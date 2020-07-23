@@ -382,4 +382,4 @@ MonoBehaviour:
   topSpeed: 7
   timeToTopSpeed: 0.4
   targetorAxis: {fileID: 7667035}
-  pickupDelay: 1.4
+  pickupDelay: 0.5

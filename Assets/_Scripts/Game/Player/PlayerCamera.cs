@@ -25,7 +25,6 @@ namespace SantriptaSharma.Breakpoint.Game
         public void DoScreenShake(float duration, float posStrength = 3, float rotStrength = 90)
         {
             cam.DOShakePosition(duration, posStrength);
-            cam.DOShakeRotation(duration, rotStrength);
         }
 
         private void Awake()

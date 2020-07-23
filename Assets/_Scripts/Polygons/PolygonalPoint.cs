@@ -8,6 +8,7 @@ namespace SantriptaSharma.Breakpoint.Polygons
     public class PolygonalPoint : MonoBehaviour
     {
         public PolygonalBody body;
+        public Rigidbody2D rb;
         public int position;
 
         bool isDying;
@@ -15,6 +16,7 @@ namespace SantriptaSharma.Breakpoint.Polygons
         private void Start()
         {
             isDying = false;
+            rb = GetComponent<Rigidbody2D>();
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

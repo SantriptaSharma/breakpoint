@@ -126,4 +126,5 @@ MonoBehaviour:
   cooldown: 0.6
   projectile: {fileID: 7991166996671669684, guid: 8704904b401fab24fab7cbe00e0da733,
     type: 3}
-  shootVelocity: 20
+  shootVelocity: 45
+  kickForce: 180

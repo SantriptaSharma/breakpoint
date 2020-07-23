@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 0}
+  rb: {fileID: 0}
   position: 0
 --- !u!58 &7425988248819048403
 CircleCollider2D:
@@ -173,5 +174,6 @@ MonoBehaviour:
   firstShotOffset: 0
   homing: 0
   bullet: {fileID: 7991166996671669684, guid: 33127424ef24cef429a242ffaca09a6a, type: 3}
-  bulletVelocity: 12
+  bulletVelocity: 25
   bulletLiveTime: 8
+  kickForce: 80
