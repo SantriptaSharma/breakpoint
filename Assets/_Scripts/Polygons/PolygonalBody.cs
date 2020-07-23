@@ -104,21 +104,33 @@ namespace SantriptaSharma.Breakpoint.Polygons
             {
                 renderer.SetPosition(i, points[i].transform.position);
             }
+        }
 
-            //if (Input.GetKeyDown(KeyCode.A))
-            //{
-            //    points[0].RemoveSelf();
-            //}
+        private void OnDrawGizmosSelected()
+        {
+            radius = length / (2 * Mathf.Sin(180 / sides * Mathf.Deg2Rad));
+            float angle = 360 / sides;
 
-            //if (Input.GetKeyDown(KeyCode.D))
-            //{
-            //    points[sides - 1].RemoveSelf();
-            //}
+            Vector3[] positions = new Vector3[sides];
+            Gizmos.color = Color.red;
 
-            //if (Input.GetKeyDown(KeyCode.W))
-            //{
-            //    AddPoint();
-            //}
+            for (int i = 0; i < sides; i++)
+            {
+                Quaternion rotation = Quaternion.AngleAxis(i * angle, Vector3.back);
+                positions[i] = transform.position + rotation * Vector3.up * radius;
+                Gizmos.DrawWireSphere(positions[i], 0.6f);
+            }
+
+            for(int i = 0; i < sides; i++)
+            {
+                Gizmos.color = Color.green;
+                if(i == sides-1)
+                {
+                    Gizmos.DrawLine(positions[i], positions[0]);
+                    break;
+                }
+                Gizmos.DrawLine(positions[i], positions[i + 1]);
+            }
         }
 
         public void AddPoint()
