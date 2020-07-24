@@ -19,17 +19,9 @@ namespace SantriptaSharma.Breakpoint.Polygons
             rb = GetComponent<Rigidbody2D>();
         }
 
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            if(collision.CompareTag("PlayerBullet"))
-            {
-                Destroy(collision.gameObject);
-                RemoveSelf();
-            }
-        }
-
         public void RemoveSelf()
         {
+            transform.parent = null;
             if (isDying) return;
 
             isDying = true;
@@ -51,7 +43,6 @@ namespace SantriptaSharma.Breakpoint.Polygons
                 {
                     body.points[i].position--;
                 }
-                Destroy(gameObject);
                 return;
             }
 
@@ -64,7 +55,6 @@ namespace SantriptaSharma.Breakpoint.Polygons
                 {
                     body.points[i].position--;
                 }
-                Destroy(gameObject);
                 return;
             }
 
@@ -75,8 +65,6 @@ namespace SantriptaSharma.Breakpoint.Polygons
             {
                 body.points[i].position--;
             }
-
-            Destroy(gameObject);
         }
     }
 }

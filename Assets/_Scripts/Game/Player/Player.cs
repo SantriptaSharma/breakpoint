@@ -1,4 +1,5 @@
 ﻿using SantriptaSharma.Breakpoint.Items;
+using SantriptaSharma.Breakpoint.Game;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace SantriptaSharma.Breakpoint.Game
         public GameObject targetorAxis;
         public float pickupDelay;
 
+        private Entity entity;
         private Vector3 targetDirection;
         private float accelerationMagnitude;
         private Rigidbody2D rb;
@@ -52,7 +54,21 @@ namespace SantriptaSharma.Breakpoint.Game
             accelerationMagnitude = Mathf.Abs(topSpeed / timeToTopSpeed);
             constrainVelocity = true;
 
+            entity = GetComponent<Entity>();
+            entity.onEntityDied.AddListener(Die);
+            entity.onTakeDamage.AddListener(Damaged);
+
             ui = UIController.instance;
+        }
+
+        public void Die(Entity e)
+        {
+            Debug.Log("I am literally dead");
+        }
+
+        public void Damaged(float damage, float health)
+        {
+            Debug.Log($"Took {damage} damage, still have {health} remaining");
         }
 
         void Update()
@@ -64,7 +80,7 @@ namespace SantriptaSharma.Breakpoint.Game
             
             if(rb.velocity.sqrMagnitude > topSpeed * topSpeed && constrainVelocity)
             {
-                rb.velocity = rb.velocity.normalized * topSpeed;
+                rb.velocity = Vector3.Lerp(rb.velocity,rb.velocity.normalized * topSpeed, 0.3f);
             }
 
             ManageWeapon();
@@ -134,7 +150,7 @@ namespace SantriptaSharma.Breakpoint.Game
         private IEnumerator StopLimitingVelocityFor(float seconds)
         {
             constrainVelocity = false;
-            yield return new WaitForSecondsRealtime(seconds);
+            yield return new WaitForSeconds(seconds);
             constrainVelocity = true;
         }
 

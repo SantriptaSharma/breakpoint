@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 7425988248819048430}
   - component: {fileID: 7425988248819048435}
   - component: {fileID: 6709412190493190102}
+  - component: {fileID: 2709908987425732840}
+  - component: {fileID: -2919410337876933205}
   m_Layer: 8
   m_Name: Point
   m_TagString: Player
@@ -177,3 +179,38 @@ MonoBehaviour:
   bulletVelocity: 25
   bulletLiveTime: 8
   kickForce: 80
+--- !u!114 &2709908987425732840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7425988248819048431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 967f686f0293d1f45a3992597c7cadd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  point: {fileID: 0}
+  shooter: {fileID: 0}
+  entity: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  fade: 0
+--- !u!114 &-2919410337876933205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7425988248819048431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22bfa149866d23b49a59b44692ec360e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageTags: 00000000
+  maxHealth: 1
+  onEntityDied:
+    m_PersistentCalls:
+      m_Calls: []
+  rb: {fileID: 0}

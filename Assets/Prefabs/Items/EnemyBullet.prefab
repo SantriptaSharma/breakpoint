@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7991166996671669686}
   - component: {fileID: 7991166996671669680}
   - component: {fileID: 6183117746996727263}
+  - component: {fileID: 6896452720398206988}
   m_Layer: 0
   m_Name: EnemyBullet
   m_TagString: EnemyBullet
@@ -133,3 +134,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca759cb25d0da3e409dedbf66be9e3bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6896452720398206988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7991166996671669684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d863fd0e2689bc341bca30e905a993e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0.5
+  dTag: 1
+  knockbackAmount: 500
+  takeTriggerDamage: 1
+  takeColliderDamage: 0
+  destroyOnCollide: 1

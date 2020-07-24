@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SantriptaSharma.Breakpoint.Game
 {
-    class UIController : MonoBehaviour
+    public class UIController : MonoBehaviour
     {
         public static UIController instance;
 

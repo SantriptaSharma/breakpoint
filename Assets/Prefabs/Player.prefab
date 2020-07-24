@@ -257,6 +257,7 @@ GameObject:
   - component: {fileID: 4121186740126761214}
   - component: {fileID: 4121186740126761155}
   - component: {fileID: 40075601}
+  - component: {fileID: 4292270428561616260}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -383,3 +384,21 @@ MonoBehaviour:
   timeToTopSpeed: 0.4
   targetorAxis: {fileID: 7667035}
   pickupDelay: 0.5
+--- !u!114 &4292270428561616260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4121186740126761154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22bfa149866d23b49a59b44692ec360e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageTags: 01000000
+  maxHealth: 10
+  onEntityDied:
+    m_PersistentCalls:
+      m_Calls: []
+  rb: {fileID: 0}

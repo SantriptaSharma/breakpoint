@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4665291626472035648}
   - component: {fileID: 4665291626472035651}
   m_Layer: 0
-  m_Name: Splodey
+  m_Name: Splodey 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,14 +46,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daa8bce38a258fe41bf829b5410025b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 4665291626472035655, guid: 0ceaa4454c5c8924192c5c88586d5275, type: 3}
+  bullet: {fileID: 7991166996671669684, guid: 8704904b401fab24fab7cbe00e0da733, type: 3}
   sprite: {fileID: 4665291626561411918}
-  count: 8
+  count: 24
   frequencyIncreasePerSecond: 0.5
   startingFrequency: 0.3
-  lifeTime: 3.3
+  lifeTime: 5
   size: 1
-  maxSize: 1.6
+  maxSize: 2.5
   shardVelocity: 24
   shardLifeTime: 8
 --- !u!50 &4665291626472035648

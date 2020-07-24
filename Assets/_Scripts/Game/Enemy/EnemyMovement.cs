@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace SantriptaSharma.Breakpoint.Game
 {
-    class EnemyMovement : MonoBehaviour
+    public class EnemyMovement : MonoBehaviour
     {
         public float flapStrength;
         public float flapCooldown;

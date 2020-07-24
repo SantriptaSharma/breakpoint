@@ -14,6 +14,7 @@ namespace SantriptaSharma.Breakpoint.Game
         public float bulletVelocity;
         public float bulletLiveTime;
         public float kickForce;
+        public bool shootingEnabled = true;
 
         PlayerCamera cam;
         Player player;
@@ -37,6 +38,8 @@ namespace SantriptaSharma.Breakpoint.Game
 
         private void Update()
         {
+            if (!shootingEnabled) return;
+
             shootTimer -= Time.deltaTime;
 
             if(shootTimer > 0) return;
