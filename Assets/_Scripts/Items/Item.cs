@@ -18,6 +18,7 @@ namespace SantriptaSharma.Breakpoint.Items
         protected new SpriteRenderer renderer;
         protected new BoxCollider2D collider;
         protected ItemState state = ItemState.Dropped;
+        protected Player player;
 
         public abstract void Use();
 
@@ -31,6 +32,8 @@ namespace SantriptaSharma.Breakpoint.Items
             renderer = GetComponent<SpriteRenderer>();
             renderer.sprite = itemSprite;
             renderer.sortingOrder = 2;
+
+            player = Player.instance;
         }
 
         protected virtual void Update()

@@ -16,7 +16,6 @@ namespace SantriptaSharma.Breakpoint.Game
         public float kickForce;
         public bool shootingEnabled = true;
 
-        PlayerCamera cam;
         Player player;
         PolygonalPoint point;
         PolygonalBody body;
@@ -28,7 +27,6 @@ namespace SantriptaSharma.Breakpoint.Game
             player = Player.instance;
             point = GetComponent<PolygonalPoint>();
             body = point.body;
-            cam = PlayerCamera.instance;
         }
 
         public void Reset()
@@ -45,11 +43,10 @@ namespace SantriptaSharma.Breakpoint.Game
             if(shootTimer > 0) return;
 
             Vector3 direction = homing ? (player.transform.position - transform.position).normalized : (transform.position - body.transform.position).normalized;
-            Rigidbody2D bulletRb = Instantiate(bullet, transform.position, Quaternion.identity).GetComponent<Rigidbody2D>();
+            Rigidbody2D bulletRb = Instantiate(bullet, transform.position, Quaternion.FromToRotation(Vector3.up, direction), ProjectileHolder.instance).GetComponent<Rigidbody2D>();
             bulletRb.velocity = direction * bulletVelocity;
             point.rb.AddForce(direction * kickForce * -1);
             Destroy(bulletRb.gameObject, bulletLiveTime);
-            cam.DoScreenShake(0.1f, 0.13f, 0.3f);
             shootTimer = shootCooldown;
         }
     }

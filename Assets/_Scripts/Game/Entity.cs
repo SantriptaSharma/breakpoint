@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.PlayerLoop;
 
 namespace SantriptaSharma.Breakpoint.Game
 {
@@ -27,7 +29,37 @@ namespace SantriptaSharma.Breakpoint.Game
         {
             health = maxHealth;
             lastDamage = -100;
+            lastDir = Vector3.zero;
             rb = GetComponent<Rigidbody2D>();
+        }
+
+        public void ProcessHit(Damage dmg)
+        {
+            Vector3 knockSource = dmg.useLastPositionKnocking ? dmg.lastPosition : dmg.transform.position;
+            TakeKnockback(dmg.knockbackAmount, knockSource);
+            TakeDamage(dmg.damage);
+            if (dmg.destroyOnCollide) Destroy(dmg.gameObject);
+        }
+
+        public bool CheckValidityAndProcessHit(Damage dmg)
+        {
+            bool isEvil = CheckValidity(dmg);
+            if (isEvil) ProcessHit(dmg);
+            return isEvil;
+        }
+
+        public bool CheckValidity(Damage dmg)
+        {
+            bool isEvil = false;
+            for (int i = 0; i < damageTags.Length; i++)
+            {
+                if (dmg.dTag == damageTags[i])
+                {
+                    isEvil = true;
+                    break;
+                }
+            }
+            return isEvil;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -45,12 +77,8 @@ namespace SantriptaSharma.Breakpoint.Game
                 }
             }
 
-            if(isEvil)
-            {
-                TakeDamage(dmg.damage);
-                TakeKnockback(dmg.knockbackAmount, dmg.transform.position);
-                if (dmg.destroyOnCollide) Destroy(dmg.gameObject);
-            }
+            if (isEvil)
+                ProcessHit(dmg);
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
@@ -69,11 +97,7 @@ namespace SantriptaSharma.Breakpoint.Game
             }
 
             if (isEvil)
-            {
-                TakeDamage(dmg.damage);
-                TakeKnockback(dmg.knockbackAmount, dmg.transform.position);
-                if (dmg.destroyOnCollide) Destroy(dmg.gameObject);
-            }
+                ProcessHit(dmg);
         }
 
         public float TakeDamage(float damage)

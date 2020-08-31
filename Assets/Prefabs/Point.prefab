@@ -53,6 +53,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -118,7 +119,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.16
+  m_Radius: 0.1325
 --- !u!50 &7425988248819048430
 Rigidbody2D:
   serializedVersion: 4
@@ -179,6 +180,7 @@ MonoBehaviour:
   bulletVelocity: 25
   bulletLiveTime: 8
   kickForce: 80
+  shootingEnabled: 1
 --- !u!114 &2709908987425732840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,6 +213,9 @@ MonoBehaviour:
   damageTags: 00000000
   maxHealth: 1
   onEntityDied:
+    m_PersistentCalls:
+      m_Calls: []
+  onTakeDamage:
     m_PersistentCalls:
       m_Calls: []
   rb: {fileID: 0}

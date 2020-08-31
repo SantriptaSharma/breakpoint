@@ -10,22 +10,16 @@ namespace SantriptaSharma.Breakpoint.Items
     {
         public DashType dashType;
         public float forceMagnitude, dashTime;
-
-        private Player player;
+        public float dashControlFactor;
 
         public override void Use()
         {
             if (currentTime > 0) return;
-            player.AddForce(dashType == DashType.Aim ? player.aimDirection * forceMagnitude : player.moveDirection * forceMagnitude);
-            player.StopLimitingVelocity(dashTime);
-            PlayerCamera.instance.DoScreenShake(0.15f, 0.5f, 5f);
+            player.AddForce(dashType == DashType.Aim ? player.aimDirection * forceMagnitude : player.voluntaryMoveDirection * forceMagnitude);
+            player.StopLimitingVelocityForSeconds(dashTime);
+            player.SetControlFactorForSeconds(new Vector2(dashControlFactor, dashControlFactor), dashTime + player.timeToResetSpeed);
+            PlayerCamera.instance.DoScreenShake(0.15f, 0.4f, 1f);
             currentTime = cooldown;
-        }
-
-        protected override void Start()
-        {
-            base.Start();
-            player = Player.instance;
         }
 
         protected override void Update()

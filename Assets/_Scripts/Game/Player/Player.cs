@@ -14,7 +14,10 @@ namespace SantriptaSharma.Breakpoint.Game
         public float topSpeed, timeToTopSpeed;
         public GameObject targetorAxis;
         public float pickupDelay;
+        public float timeToResetSpeed;
+        public Vector2 voluntaryMoveDirection;
 
+        private Vector2 controlFactor;
         private Entity entity;
         private Vector3 targetDirection;
         private float accelerationMagnitude;
@@ -44,6 +47,7 @@ namespace SantriptaSharma.Breakpoint.Game
 
         void Start()
         {
+            voluntaryMoveDirection = Vector2.right;
             lastPickup = -pickupDelay;
             power = weapon = null;
             cam = PlayerCamera.instance;
@@ -52,6 +56,7 @@ namespace SantriptaSharma.Breakpoint.Game
             targetDirection = new Vector3();
             accelerationMagnitude = Mathf.Abs(topSpeed / timeToTopSpeed);
             constrainVelocity = true;
+            controlFactor = new Vector2(1, 1);
 
             entity = GetComponent<Entity>();
             entity.onEntityDied.AddListener(Die);
@@ -74,12 +79,16 @@ namespace SantriptaSharma.Breakpoint.Game
         {
             targetDirection.Set(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0);
             targetDirection.Normalize();
-
-            rb.AddForce(targetDirection * accelerationMagnitude);
-            
-            if(rb.velocity.sqrMagnitude > topSpeed * topSpeed && constrainVelocity)
+            if(targetDirection.magnitude != 0)
             {
-                rb.velocity = Vector3.Lerp(rb.velocity,rb.velocity.normalized * topSpeed, 0.3f);
+                voluntaryMoveDirection = targetDirection;
+            }
+
+            rb.AddForce(targetDirection * accelerationMagnitude * ((Vector2.up * controlFactor.y) + (Vector2.right * controlFactor.x)));
+
+            if (rb.velocity.sqrMagnitude > topSpeed * topSpeed && constrainVelocity)
+            {
+                rb.velocity = Vector3.MoveTowards(rb.velocity,rb.velocity.normalized * topSpeed, (topSpeed/timeToResetSpeed)*Time.deltaTime);
             }
 
             ManageWeapon();
@@ -153,9 +162,21 @@ namespace SantriptaSharma.Breakpoint.Game
             constrainVelocity = true;
         }
 
-        public void StopLimitingVelocity(float seconds)
+        private IEnumerator SetControlFactorFor(Vector2 newControlFactor, float seconds)
+        {
+            controlFactor = newControlFactor;
+            yield return new WaitForSeconds(seconds);
+            controlFactor = new Vector2(1, 1);
+        }
+
+        public void StopLimitingVelocityForSeconds(float seconds)
         {
             StartCoroutine(StopLimitingVelocityFor(seconds));
+        }
+
+        public void SetControlFactorForSeconds(Vector2 newControlFactor, float seconds)
+        {
+            StartCoroutine(SetControlFactorFor(newControlFactor, seconds));
         }
 
         public void AddForce(Vector2 force)

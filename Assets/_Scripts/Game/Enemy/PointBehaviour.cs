@@ -40,8 +40,8 @@ namespace SantriptaSharma.Breakpoint.Game
 
         public void Die(Entity e)
         {
-            entity.rb.velocity *= 0.7f;
-            entity.RepeatLastKnockback(160);
+            entity.rb.velocity *= 0;
+            //entity.RepeatLastKnockback(1200);
             point.RemoveSelf();
             shooter.shootingEnabled = false;
             fade = true;
