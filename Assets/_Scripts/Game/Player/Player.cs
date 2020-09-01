@@ -83,7 +83,7 @@ namespace SantriptaSharma.Breakpoint.Game
             {
                 voluntaryMoveDirection = targetDirection;
             }
-
+            
             rb.AddForce(targetDirection * accelerationMagnitude * ((Vector2.up * controlFactor.y) + (Vector2.right * controlFactor.x)));
 
             if (rb.velocity.sqrMagnitude > topSpeed * topSpeed && constrainVelocity)
