@@ -16,18 +16,23 @@ namespace SantriptaSharma.Breakpoint.Game
         public float pickupDelay;
         public float timeToResetSpeed;
         public Vector2 voluntaryMoveDirection;
+        [Space]
+        public float intensityStart;
+        public float intensityZero;
 
         private Vector2 controlFactor;
         private Entity entity;
         private Vector3 targetDirection;
         private float accelerationMagnitude;
         private Rigidbody2D rb;
+        private new SpriteRenderer renderer;
         private PlayerCamera cam;
         private float lastPickup;
         private Weapon weapon;
         private Item power;
         private bool constrainVelocity;
-
+        private float currentIntensity, intensityPerDamage;
+        
         private UIController ui;
 
         public Vector2 aimDirection { get { return targetorAxis.transform.right; } }
@@ -42,7 +47,6 @@ namespace SantriptaSharma.Breakpoint.Game
             }
 
             instance = this;
-            DontDestroyOnLoad(gameObject);
         }
 
         void Start()
@@ -58,21 +62,30 @@ namespace SantriptaSharma.Breakpoint.Game
             constrainVelocity = true;
             controlFactor = new Vector2(1, 1);
 
+            renderer = GetComponent<SpriteRenderer>();
+
             entity = GetComponent<Entity>();
             entity.onEntityDied.AddListener(Die);
             entity.onTakeDamage.AddListener(Damaged);
+
+            currentIntensity = intensityStart;
+            intensityPerDamage = (intensityStart - intensityZero) / entity.maxHealth;
+            float factor = currentIntensity;
+            renderer.sharedMaterial.SetColor("_Color", new Color(0x16 * factor, 0xdf * factor, 0x05 * factor));
 
             ui = UIController.instance;
         }
 
         public void Die(Entity e)
         {
-            Debug.Log("I am literally dead");
         }
 
         public void Damaged(float damage, float health)
         {
-            Debug.Log($"Took {damage} damage, still have {health} remaining");
+            if (health < 0) return;
+            currentIntensity -= intensityPerDamage * damage;
+            float factor = currentIntensity;
+            renderer.material.SetColor("_Color", new Color(0x16 * factor, 0xdf * factor, 0x05 * factor));
         }
 
         void Update()

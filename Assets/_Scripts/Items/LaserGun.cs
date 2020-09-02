@@ -41,7 +41,7 @@ namespace SantriptaSharma.Breakpoint.Items
             if(hit.collider != null)
             {
                 distance = hit.distance + maskDistance;
-                player.AddForce(-aimDir * playerKnockbackPerSecond * Time.deltaTime * Mathf.Max(0,Mathf.Pow(1.22f, maxLength - hit.distance * 1.75f)));
+                player.AddForce(-aimDir * playerKnockbackPerSecond * Time.deltaTime * Mathf.Max(0,Mathf.Pow(1.1f, maxLength - hit.distance * 1.75f)));
                 Entity entity = hit.collider.GetComponent<Entity>();
                 
                 // TODO: Replace with coroutines and refactor

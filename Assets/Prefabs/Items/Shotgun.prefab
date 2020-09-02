@@ -130,6 +130,6 @@ MonoBehaviour:
   shootVelocity: 18
   numberOfProjectiles: 5
   spreadDegrees: 40
-  separation: 0.8
+  separation: 0.46
   kickForce: 50
   projectileLiveTime: 6

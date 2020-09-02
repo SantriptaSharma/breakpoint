@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.PlayerLoop;
@@ -38,7 +37,11 @@ namespace SantriptaSharma.Breakpoint.Game
             Vector3 knockSource = dmg.useLastPositionKnocking ? dmg.lastPosition : dmg.transform.position;
             TakeKnockback(dmg.knockbackAmount, knockSource);
             TakeDamage(dmg.damage);
-            if (dmg.destroyOnCollide) Destroy(dmg.gameObject);
+            if (dmg.destroyOnCollide)
+            {
+                Destroy(dmg.gameObject);
+                dmg.SetDamageActive(false);
+            }
         }
 
         public bool CheckValidityAndProcessHit(Damage dmg)
@@ -50,16 +53,14 @@ namespace SantriptaSharma.Breakpoint.Game
 
         public bool CheckValidity(Damage dmg)
         {
-            bool isEvil = false;
             for (int i = 0; i < damageTags.Length; i++)
             {
                 if (dmg.dTag == damageTags[i])
                 {
-                    isEvil = true;
-                    break;
+                    return true;
                 }
             }
-            return isEvil;
+            return false;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -67,18 +68,15 @@ namespace SantriptaSharma.Breakpoint.Game
             Damage dmg = collision.GetComponent<Damage>();
             if (dmg == null || !dmg.takeTriggerDamage) return;
 
-            bool isEvil = false;
             for(int i = 0; i < damageTags.Length; i++)
             { 
                 if(dmg.dTag == damageTags[i])
                 {
-                    isEvil = true;
+                    Debug.Log("Hit Trigg");
+                    ProcessHit(dmg);
                     break;
                 }
             }
-
-            if (isEvil)
-                ProcessHit(dmg);
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
@@ -86,18 +84,15 @@ namespace SantriptaSharma.Breakpoint.Game
             Damage dmg = collision.gameObject.GetComponent<Damage>();
             if (dmg == null || !dmg.takeColliderDamage) return;
 
-            bool isEvil = false;
             for (int i = 0; i < damageTags.Length; i++)
             {
                 if (dmg.dTag == damageTags[i])
                 {
-                    isEvil = true;
+                    Debug.Log("Hit Coll");
+                    ProcessHit(dmg);
                     break;
                 }
             }
-
-            if (isEvil)
-                ProcessHit(dmg);
         }
 
         public float TakeDamage(float damage)

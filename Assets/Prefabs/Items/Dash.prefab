@@ -128,5 +128,6 @@ MonoBehaviour:
   type: 1
   cooldown: 2
   dashType: 1
-  forceMagnitude: 400
+  forceMagnitude: 1225
   dashTime: 0.8
+  dashControlFactor: 0.45

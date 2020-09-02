@@ -1,12 +1,21 @@
 ﻿using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
+using SantriptaSharma.Breakpoint.Polygons;
+using System.Security.AccessControl;
+using TMPro;
+using UnityEngine.SceneManagement;
 
 namespace SantriptaSharma.Breakpoint.Game
 {
     public class UIController : MonoBehaviour
     {
         public static UIController instance;
+        [System.NonSerialized]
+        public int polygonCount;
+        public GameObject overPanel;
+        public TextMeshProUGUI gameOverText;
+
 
         [SerializeField]
         private Image weaponImage, powerImage;
@@ -14,6 +23,7 @@ namespace SantriptaSharma.Breakpoint.Game
         private RectTransform weaponCooldownIndicator, powerCooldownIndicator;
 
         private float weaponCooldownMaxHeight, powerCooldownMaxHeight;
+        private bool isOver;
 
         private void Awake()
         {
@@ -24,15 +34,57 @@ namespace SantriptaSharma.Breakpoint.Game
             }
 
             instance = this;
-            DontDestroyOnLoad(gameObject);
+        }
+
+
+        public void RemovePolygon()
+        {
+            if (--polygonCount == 0)
+            {
+                Player.instance.SetControlFactorForSeconds(Vector2.zero, 12389);
+                ShowWin();
+            }
+
+            Debug.Log($"Remaining Polygons: {polygonCount}");
+        }
+
+        private void ShowWin()
+        {
+            isOver = true;
+            overPanel.SetActive(true);
+            gameOverText.text = "You Win.";
+        }
+
+        public void ShowLoss(Entity e)
+        {
+            isOver = true;
+            overPanel.SetActive(true);
+            gameOverText.text = "You Lose.";
         }
 
         private void Start()
         {
             weaponCooldownMaxHeight = weaponCooldownIndicator.rect.height;
             powerCooldownMaxHeight = powerCooldownIndicator.rect.height;
+            Player.instance.GetComponent<Entity>().onEntityDied.AddListener(ShowLoss);
+            polygonCount = FindObjectsOfType<PolygonalBody>().Length; //TODO: Optimize and don't use find object of type
             SetWeaponFraction(0);
             SetPowerFraction(0);
+            isOver = false;
+            overPanel.SetActive(false);
+        }
+
+        private void Update()
+        {
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
+                Application.Quit();
+            }
+
+            if(isOver && Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene(0);
+            }
         }
 
         public void SetWeaponImage(Sprite weaponSprite)

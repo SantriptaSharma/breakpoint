@@ -124,9 +124,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemSprite: {fileID: 21300000, guid: 75acf805abed91245a453473d2c8d0e2, type: 3}
   type: 0
-  cooldown: 1.3
+  cooldown: 1.41
   projectile: {fileID: 4665291626472035655, guid: 788ddd446c1df4148b20180a8f2f377c,
     type: 3}
   shootVelocity: 30
-  separation: 1
+  separation: 0.4
   kickForce: 350

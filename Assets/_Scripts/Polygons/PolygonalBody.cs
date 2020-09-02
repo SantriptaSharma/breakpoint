@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using SantriptaSharma.Breakpoint.Game;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -157,6 +158,7 @@ namespace SantriptaSharma.Breakpoint.Polygons
         {
             //Temp
             Destroy(gameObject);
+            UIController.instance.RemovePolygon();
         }
     }
 }

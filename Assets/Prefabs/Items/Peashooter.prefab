@@ -128,5 +128,5 @@ MonoBehaviour:
   projectile: {fileID: 7991166996671669684, guid: 8704904b401fab24fab7cbe00e0da733,
     type: 3}
   shootVelocity: 45
-  separation: 0
+  separation: 0.3
   kickForce: 180
