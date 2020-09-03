@@ -4872,7 +4872,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.96714103, y: 0.9657935}
+  m_Size: {x: 0.8, y: 0.7}
   m_EdgeRadius: 0
 --- !u!212 &5167073432698651663
 SpriteRenderer:
@@ -4893,7 +4893,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9290c334edcb12643972d05e5e91d7ad, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4914,7 +4914,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 10ca01a7e111bda489bb804d40a8e6e2, type: 3}
+  m_Sprite: {fileID: -8809284872407378732, guid: bd6cefd9d8a6f9d4aad9dc702078c801,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5033,7 +5034,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e04ce6155c714c40a464500fbf96387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSprite: {fileID: 21300000, guid: 10ca01a7e111bda489bb804d40a8e6e2, type: 3}
+  itemSprite: {fileID: -8809284872407378732, guid: bd6cefd9d8a6f9d4aad9dc702078c801,
+    type: 3}
   type: 0
   cooldown: 0
   projectile: {fileID: 0}

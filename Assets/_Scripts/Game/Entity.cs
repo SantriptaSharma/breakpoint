@@ -72,7 +72,6 @@ namespace SantriptaSharma.Breakpoint.Game
             { 
                 if(dmg.dTag == damageTags[i])
                 {
-                    Debug.Log("Hit Trigg");
                     ProcessHit(dmg);
                     break;
                 }
@@ -88,7 +87,6 @@ namespace SantriptaSharma.Breakpoint.Game
             {
                 if (dmg.dTag == damageTags[i])
                 {
-                    Debug.Log("Hit Coll");
                     ProcessHit(dmg);
                     break;
                 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using SantriptaSharma.Breakpoint.Game;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -48,7 +49,7 @@ namespace SantriptaSharma.Breakpoint.Items
             {
                 Quaternion rot = Quaternion.AngleAxis(degreesPerBullet * i, Vector3.back);
                 Vector3 dir = (rot * Vector3.up).normalized;
-                GameObject shard = Instantiate(bullet, transform.position + dir * 0.3f, rot);
+                GameObject shard = Instantiate(bullet, transform.position + dir * 0.3f, rot, ProjectileHolder.instance);
                 shard.GetComponent<Rigidbody2D>().velocity = dir * shardVelocity;
                 Destroy(shard.gameObject, shardLifeTime);
             }

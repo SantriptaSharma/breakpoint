@@ -12,7 +12,7 @@ namespace SantriptaSharma.Breakpoint.Game
     {
         public static UIController instance;
         [System.NonSerialized]
-        public int polygonCount;
+        public int polygonCount = 0;
         public GameObject overPanel;
         public TextMeshProUGUI gameOverText;
 
@@ -36,6 +36,10 @@ namespace SantriptaSharma.Breakpoint.Game
             instance = this;
         }
 
+        public void AddPolygon()
+        {
+            polygonCount++;
+        }
 
         public void RemovePolygon()
         {
@@ -45,7 +49,7 @@ namespace SantriptaSharma.Breakpoint.Game
                 ShowWin();
             }
 
-            Debug.Log($"Remaining Polygons: {polygonCount}");
+            Debug.Log($"polygons left: {polygonCount}");
         }
 
         private void ShowWin()
@@ -67,7 +71,6 @@ namespace SantriptaSharma.Breakpoint.Game
             weaponCooldownMaxHeight = weaponCooldownIndicator.rect.height;
             powerCooldownMaxHeight = powerCooldownIndicator.rect.height;
             Player.instance.GetComponent<Entity>().onEntityDied.AddListener(ShowLoss);
-            polygonCount = FindObjectsOfType<PolygonalBody>().Length; //TODO: Optimize and don't use find object of type
             SetWeaponFraction(0);
             SetPowerFraction(0);
             isOver = false;

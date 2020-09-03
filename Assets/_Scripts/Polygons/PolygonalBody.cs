@@ -2,10 +2,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UIElements;
 
 namespace SantriptaSharma.Breakpoint.Polygons
 {
+    [System.Serializable]
+    public class PolygonDeathEvent : UnityEvent<PolygonalBody> { };
+    [System.Serializable]
+    public class LostPointEvent : UnityEvent<PolygonalPoint> { };
+
     [RequireComponent(typeof(Rigidbody2D))]
     [RequireComponent(typeof(LineRenderer))]
     public class PolygonalBody : MonoBehaviour
@@ -21,6 +27,9 @@ namespace SantriptaSharma.Breakpoint.Polygons
         public float interDamping = 0.5f;
         [System.NonSerialized]
         public List<PolygonalPoint> points;
+
+        public PolygonDeathEvent onDie;
+        public LostPointEvent onLosePoint;
 
         private new LineRenderer renderer;
         private Rigidbody2D rb;
@@ -88,6 +97,7 @@ namespace SantriptaSharma.Breakpoint.Polygons
         public void OnRemoved(int i)
         {
             PolygonalPoint point = points[i];
+            onLosePoint.Invoke(point);
             foreach(SpringJoint2D s in GetComponents<SpringJoint2D>())
             {
                 if(s.connectedBody.gameObject == point.gameObject)
@@ -156,9 +166,7 @@ namespace SantriptaSharma.Breakpoint.Polygons
 
         public void Kill()
         {
-            //Temp
-            Destroy(gameObject);
-            UIController.instance.RemovePolygon();
+            onDie.Invoke(this);
         }
     }
 }

@@ -12,6 +12,7 @@ namespace SantriptaSharma.Breakpoint.Game
         protected virtual void Start()
         {
             body = GetComponent<PolygonalBody>();
+            Debug.Log("called");
             Modify(body.points.ToArray());
         }
 
