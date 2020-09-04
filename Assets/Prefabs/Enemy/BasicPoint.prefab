@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 2709908987425732840}
   - component: {fileID: -2919410337876933205}
   m_Layer: 8
-  m_Name: Point
+  m_Name: BasicPoint
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
