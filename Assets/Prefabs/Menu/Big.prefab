@@ -115,8 +115,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 0.9150943, g: 0.32287288, b: 0.32287288, a: 1}
+      key1: {r: 0.3679245, g: 0.09163402, b: 0.09163402, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -165,8 +165,8 @@ MonoBehaviour:
   pointObject: {fileID: 7425988248819048431, guid: 950e9b3ccc1851f4088348d86169b34f,
     type: 3}
   sides: 8
-  length: 4.15
-  lineWidth: 0.05
+  length: 2.54
+  lineWidth: 0.25
   damping: 0.639
   interDamping: 0.723
   onDie:

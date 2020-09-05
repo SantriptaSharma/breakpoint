@@ -14,7 +14,6 @@ namespace SantriptaSharma.Breakpoint.Game
         {
             body = GetComponent<PolygonalBody>();
             body.onDie.AddListener(Died);
-            UIController.instance.AddPolygon();
         }
 
         void Update()
@@ -24,7 +23,6 @@ namespace SantriptaSharma.Breakpoint.Game
 
         void Died(PolygonalBody deadBody)
         {
-            UIController.instance.RemovePolygon();
             Destroy(gameObject);
         }
     }

@@ -266,7 +266,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -561, y: 281}
+  m_AnchoredPosition: {x: -552.75, y: 281}
   m_SizeDelta: {x: 37.52893, y: 37.52893}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &627172250
@@ -310,7 +310,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -561, y: 193.9}
+  m_AnchoredPosition: {x: -552.75, y: 193.9}
   m_SizeDelta: {x: 37.52893, y: 37.52893}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &728210940
@@ -356,6 +356,7 @@ Transform:
   - {fileID: 372835334}
   - {fileID: 1996376608}
   - {fileID: 1203734091}
+  - {fileID: 1193423818}
   m_Father: {fileID: 1882781768}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -382,6 +383,7 @@ MonoBehaviour:
   - {fileID: 2095722935}
   - {fileID: 372835334}
   - {fileID: 1996376608}
+  - {fileID: 1193423818}
   target: {fileID: 1565832773}
   forceRange: {x: 120, y: 2400}
 --- !u!1 &810718959
@@ -560,7 +562,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -497, y: -261}
+  m_AnchoredPosition: {x: -428, y: -352}
   m_SizeDelta: {x: 398.5822, y: 84.92798}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1032273633
@@ -747,7 +749,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 838860799
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -882,6 +884,41 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1193423817
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1193423818}
+  m_Layer: 5
+  m_Name: Target (7)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1193423818
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193423817}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 21.102835}
+  m_LocalScale: {x: 0.011111111, y: 0.011111111, z: 0.011111111}
+  m_Children: []
+  m_Father: {fileID: 748965293}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.79, y: -1.34}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1203734090
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,7 +1061,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 838860799
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -1146,7 +1183,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -558.67, y: 241}
-  m_SizeDelta: {x: 1117.3478, y: 1117.3478}
+  m_SizeDelta: {x: 1117.26, y: 1117.3478}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1495034201
 MonoBehaviour:
@@ -1168,8 +1205,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -3696225328785611619, guid: bd6cefd9d8a6f9d4aad9dc702078c801,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: e27a2b416a41b4b48aa514edee1d6de8, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1258,7 +1294,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -561, y: 281}
+  m_AnchoredPosition: {x: -552.75, y: 281}
   m_SizeDelta: {x: 37.52893, y: 37.52893}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!120 &1551620356
@@ -1302,9 +1338,9 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 173
   m_Positions:
-  - {x: -10, y: 10, z: 0}
-  - {x: 10, y: 0, z: 1}
-  - {x: -10, y: -10, z: 1}
+  - {x: -5, y: 14, z: 0}
+  - {x: 8, y: 0, z: 1}
+  - {x: -5, y: -14, z: 1}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -1313,7 +1349,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.05940617
+        value: 0.1287131
         inSlope: 0
         outSlope: 0
         tangentMode: 0

@@ -33,6 +33,8 @@ namespace SantriptaSharma.Breakpoint.Items
 
         private void Update()
         {
+            if (PauseController.isPaused) return;
+
             float elapsedTime = Time.time - startTime;
             float currentFrequency = startingFrequency + frequencyIncreasePerSecond * elapsedTime;
             float currentFactor = (Mathf.Sin(2 * Mathf.PI * elapsedTime * currentFrequency) + 1)/2;

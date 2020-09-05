@@ -40,12 +40,6 @@ namespace SantriptaSharma.Breakpoint.Game
 
         private void Awake()
         {
-            if (instance != null)
-            {
-                DestroyImmediate(gameObject);
-                return;
-            }
-
             instance = this;
         }
 
@@ -90,6 +84,8 @@ namespace SantriptaSharma.Breakpoint.Game
 
         void Update()
         {
+            if (PauseController.isPaused) return;
+
             targetDirection.Set(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0);
             targetDirection.Normalize();
             if(targetDirection.magnitude != 0)

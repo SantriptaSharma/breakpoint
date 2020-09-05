@@ -29,14 +29,7 @@ namespace SantriptaSharma.Breakpoint.Game
 
         private void Awake()
         {
-            if(instance != null)
-            {
-                DestroyImmediate(gameObject);
-            }
-            else
-            {
-                instance = this;
-            }
+            instance = this;
         }
 
         void Start()
@@ -47,6 +40,8 @@ namespace SantriptaSharma.Breakpoint.Game
 
         void Update()
         {
+            if (PauseController.isPaused) return;
+
             Vector3 mousePosition = MousePositionFromPlayerPOV();
             Vector3 target = mousePosition - transform.parent.position;
             target = target.normalized;

@@ -33,6 +33,7 @@ namespace SantriptaSharma.Breakpoint.Game
         {
             for (; ; )
             {
+                if (PauseController.isPaused) yield return new WaitForSeconds(0.0001f); //Resume on unpause
                 Vector3 myPos = transform.position; Vector3 playerPos = player.transform.position;
                 myPos.z = 0; playerPos.z = 0;
                 if ((playerPos - myPos).sqrMagnitude <= squaredActivationRadius)
@@ -43,11 +44,6 @@ namespace SantriptaSharma.Breakpoint.Game
                 }
                 yield return new WaitForSeconds(updateDelay);
             }
-        }
-
-        void Update()
-        {
-        
         }
     }
 }

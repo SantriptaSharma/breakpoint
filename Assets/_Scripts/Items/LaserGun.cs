@@ -101,17 +101,14 @@ namespace SantriptaSharma.Breakpoint.Items
         {
             base.Update();
 
+            if (PauseController.isPaused) return;
+
             if (!isUsing)
             {
                 laserRenderer.positionCount = 0;
                 trainedTime = Mathf.MoveTowards(trainedTime, 0, secondsDecayPerSecond * Time.deltaTime);
                 var emission = laserParticles.emission;
                 emission.rateOverTime = 0;
-            }
-
-            if(Input.GetKeyDown(KeyCode.Escape))
-            {
-                Debug.Break();
             }
 
             isUsing = false;

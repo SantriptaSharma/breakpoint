@@ -38,7 +38,9 @@ namespace SantriptaSharma.Breakpoint.Items
 
         protected virtual void Update()
         {
-            if(state == ItemState.Dropped)
+            if (PauseController.isPaused) return;
+
+            if (state == ItemState.Dropped)
             {
                 currentTime = cooldown;
                 return;

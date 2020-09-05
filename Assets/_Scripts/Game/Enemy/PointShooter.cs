@@ -36,7 +36,7 @@ namespace SantriptaSharma.Breakpoint.Game
 
         private void Update()
         {
-            if (!shootingEnabled) return;
+            if (!shootingEnabled || PauseController.isPaused) return;
 
             shootTimer -= Time.deltaTime;
 

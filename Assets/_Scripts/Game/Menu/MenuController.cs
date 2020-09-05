@@ -41,6 +41,7 @@ namespace SantriptaSharma.Breakpoint.Game
 
         void Update()
         {
+            // TODO: Use get axis instead
             if(Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             {
                 if(++selected >= menuButtons.Length)

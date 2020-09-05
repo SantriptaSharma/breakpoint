@@ -25,6 +25,8 @@ namespace SantriptaSharma.Breakpoint.Game
 
         private void LateUpdate()
         {
+            if (PauseController.isPaused) return;
+
             lastPosition = transform.position;
         }
 

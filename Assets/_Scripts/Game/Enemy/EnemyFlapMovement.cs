@@ -23,6 +23,8 @@ namespace SantriptaSharma.Breakpoint.Game
 
         private void Update()
         {
+            if (PauseController.isPaused) return;
+
             flapTimer -= Time.deltaTime;
 
             if (flapTimer > 0)
