@@ -153,4 +153,4 @@ MonoBehaviour:
   takeTriggerDamage: 1
   takeColliderDamage: 0
   destroyOnCollide: 1
-  useLastPositionKnocking: 0
+  useLastPositionKnocking: 1

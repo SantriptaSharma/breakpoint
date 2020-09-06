@@ -149,7 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0.12
   dTag: 0
-  knockbackAmount: 404.36
+  knockbackAmount: 320
   takeTriggerDamage: 1
   takeColliderDamage: 0
   destroyOnCollide: 1

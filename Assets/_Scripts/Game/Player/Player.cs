@@ -77,7 +77,7 @@ namespace SantriptaSharma.Breakpoint.Game
         public void Damaged(float damage, float health)
         {
             if (health < 0) return;
-            currentIntensity -= intensityPerDamage * damage;
+            currentIntensity = intensityStart - intensityPerDamage * (entity.maxHealth - health);
             float factor = currentIntensity;
             renderer.material.SetColor("_Color", new Color(0x16 * factor, 0xdf * factor, 0x05 * factor));
         }
@@ -169,6 +169,18 @@ namespace SantriptaSharma.Breakpoint.Game
             constrainVelocity = false;
             yield return new WaitForSeconds(seconds);
             constrainVelocity = true;
+        }
+
+        public void MakeInvulnerableForSeconds(float seconds)
+        {
+            StartCoroutine(Invulnerable(seconds));
+        }
+
+        private IEnumerator Invulnerable(float sec)
+        {
+            entity.takingDamage = false;
+            yield return new WaitForSeconds(sec);
+            entity.takingDamage = true;
         }
 
         private IEnumerator SetControlFactorFor(Vector2 newControlFactor, float seconds)

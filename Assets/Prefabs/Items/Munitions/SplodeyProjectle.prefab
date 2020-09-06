@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6183117746996727263}
   - component: {fileID: -2997501564877394275}
   m_Layer: 0
-  m_Name: BaseBullet
+  m_Name: SplodeyProjectle
   m_TagString: PlayerBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,9 +147,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d863fd0e2689bc341bca30e905a993e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0.24
+  damage: 0.49
   dTag: 0
-  knockbackAmount: 220
+  knockbackAmount: 450
   takeTriggerDamage: 1
   takeColliderDamage: 0
   destroyOnCollide: 1

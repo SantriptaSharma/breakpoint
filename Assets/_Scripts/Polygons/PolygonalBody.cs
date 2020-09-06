@@ -47,6 +47,7 @@ namespace SantriptaSharma.Breakpoint.Polygons
             //Formulae I got off the internet, radius & central angle between two adjacent points on a regular polygon
             radius = length / (2 * Mathf.Sin(180 / sides * Mathf.Deg2Rad));
             float angle = 360 / sides;
+            float startAngle = transform.rotation.eulerAngles.z;
 
             for (int i = 0; i < sides; i++)
             {
@@ -54,7 +55,7 @@ namespace SantriptaSharma.Breakpoint.Polygons
                 points[i].body = this;
                 points[i].position = i;
 
-                Quaternion rot = Quaternion.AngleAxis(angle * i, Vector3.back);
+                Quaternion rot = Quaternion.AngleAxis(-startAngle + angle * i, Vector3.back);
                 Vector3 pointPos = transform.position + rot * Vector3.up * radius * 0.1f;
 
                 points[i].transform.position = pointPos;
@@ -121,13 +122,14 @@ namespace SantriptaSharma.Breakpoint.Polygons
         {
             radius = length / (2 * Mathf.Sin(180 / sides * Mathf.Deg2Rad));
             float angle = 360 / sides;
+            float originalAngle = transform.rotation.eulerAngles.z;
 
             Vector3[] positions = new Vector3[sides];
             Gizmos.color = Color.red;
 
             for (int i = 0; i < sides; i++)
             {
-                Quaternion rotation = Quaternion.AngleAxis(i * angle, Vector3.back);
+                Quaternion rotation = Quaternion.AngleAxis(-originalAngle + i * angle, Vector3.back);
                 positions[i] = transform.position + rotation * Vector3.up * radius;
                 Gizmos.DrawWireSphere(positions[i], 0.6f);
             }

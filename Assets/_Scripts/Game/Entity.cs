@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -19,6 +20,8 @@ namespace SantriptaSharma.Breakpoint.Game
         public EntityDeathEvent onEntityDied;
         public DamageEvent onTakeDamage;
         public Rigidbody2D rb;
+        [System.NonSerialized]
+        public bool takingDamage;
 
         private Vector3 lastDir;
         private float health;
@@ -30,10 +33,13 @@ namespace SantriptaSharma.Breakpoint.Game
             lastDamage = -100;
             lastDir = Vector3.zero;
             rb = GetComponent<Rigidbody2D>();
+            takingDamage = true;
         }
 
         public void ProcessHit(Damage dmg)
         {
+            if (!takingDamage) return;
+
             Vector3 knockSource = dmg.useLastPositionKnocking ? dmg.lastPosition : dmg.transform.position;
             TakeKnockback(dmg.knockbackAmount, knockSource);
             TakeDamage(dmg.damage);
@@ -46,6 +52,8 @@ namespace SantriptaSharma.Breakpoint.Game
 
         public bool CheckValidityAndProcessHit(Damage dmg)
         {
+            if (!takingDamage) return false;
+
             bool isEvil = CheckValidity(dmg);
             if (isEvil) ProcessHit(dmg);
             return isEvil;
@@ -53,6 +61,8 @@ namespace SantriptaSharma.Breakpoint.Game
 
         public bool CheckValidity(Damage dmg)
         {
+            if (!takingDamage) return false;
+
             for (int i = 0; i < damageTags.Length; i++)
             {
                 if (dmg.dTag == damageTags[i])
@@ -65,6 +75,8 @@ namespace SantriptaSharma.Breakpoint.Game
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            if (!takingDamage) return;
+
             Damage dmg = collision.GetComponent<Damage>();
             if (dmg == null || !dmg.takeTriggerDamage) return;
 
@@ -80,6 +92,8 @@ namespace SantriptaSharma.Breakpoint.Game
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
+            if (!takingDamage) return;
+
             Damage dmg = collision.gameObject.GetComponent<Damage>();
             if (dmg == null || !dmg.takeColliderDamage) return;
 
@@ -95,10 +109,10 @@ namespace SantriptaSharma.Breakpoint.Game
 
         public float TakeDamage(float damage)
         {
-            if (Time.time - lastDamage <= 0.1f) return health;
+            if (Time.time - lastDamage <= 0.1f || !takingDamage) return health;
 
             health -= damage;
-
+            health = Mathf.Clamp(health, health, maxHealth);
             if (health <= 0)
             {
                 onEntityDied.Invoke(this);
@@ -111,6 +125,8 @@ namespace SantriptaSharma.Breakpoint.Game
 
         public void TakeKnockback(float magnitude, Vector3 source)
         {
+            if (!takingDamage) return;
+
             Vector3 dir = (transform.position - source).normalized;
             rb.AddForce(dir * magnitude);
             lastDir = dir;

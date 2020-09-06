@@ -14,13 +14,20 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.2d.common": {
-      "version": "3.0.0",
+      "version": "3.0.1",
       "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.2d.sprite": "1.0.0",
         "com.unity.modules.uielements": "1.0.0"
       },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.2d.path": {
+      "version": "3.0.2",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.2d.psdimporter": {
@@ -39,6 +46,18 @@
       "depth": 0,
       "source": "builtin",
       "dependencies": {}
+    },
+    "com.unity.2d.spriteshape": {
+      "version": "4.1.3",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.mathematics": "1.1.0",
+        "com.unity.2d.common": "3.0.1",
+        "com.unity.2d.path": "3.0.2",
+        "com.unity.modules.physics2d": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
     },
     "com.unity.collab-proxy": {
       "version": "1.3.8",
@@ -79,7 +98,7 @@
     },
     "com.unity.mathematics": {
       "version": "1.1.0",
-      "depth": 2,
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"

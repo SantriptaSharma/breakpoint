@@ -22,9 +22,9 @@ namespace SantriptaSharma.Breakpoint.Game
             return (actualCameraPosition + (player.position - transform.position));
         }
 
-        public void DoScreenShake(float duration, float posStrength = 3, float rotStrength = 90)
+        public void DoScreenShake(float duration, float posStrength = 3, int rotStrength = 10)
         {
-            cam.DOShakePosition(duration, posStrength);
+            cam.DOShakePosition(duration, posStrength, rotStrength);
         }
 
         private void Awake()

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daa8bce38a258fe41bf829b5410025b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 7991166996671669684, guid: 8704904b401fab24fab7cbe00e0da733, type: 3}
+  bullet: {fileID: 7991166996671669684, guid: 1c8f34d178225e04bb5ed7f146984ada, type: 3}
   sprite: {fileID: 4665291626561411918}
   count: 12
   frequencyIncreasePerSecond: 1

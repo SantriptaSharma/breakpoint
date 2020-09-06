@@ -388,8 +388,8 @@ MonoBehaviour:
   pickupDelay: 0.5
   timeToResetSpeed: 0.05
   voluntaryMoveDirection: {x: 0, y: 0}
-  intensityStart: 2.24
-  intensityZero: 0.3
+  intensityStart: 0.012
+  intensityZero: 0.00005
 --- !u!114 &4292270428561616260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,7 +403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageTags: 01000000
-  maxHealth: 10
+  maxHealth: 3
   onEntityDied:
     m_PersistentCalls:
       m_Calls: []

@@ -18,7 +18,7 @@ namespace SantriptaSharma.Breakpoint.Items
             var o = Instantiate(projectile, transform.position + dir * separation, Quaternion.FromToRotation(Vector3.up, dir), ProjectileHolder.instance);
             o.GetComponent<Rigidbody2D>().velocity = dir * shootVelocity;
             player.AddForce(dir * kickForce * -1);
-            PlayerCamera.instance.DoScreenShake(0.2f, 0.03f, 0.5f);
+            PlayerCamera.instance.DoScreenShake(0.2f, 0.08f);
             currentTime = cooldown;
             Destroy(o, 12);
         }
