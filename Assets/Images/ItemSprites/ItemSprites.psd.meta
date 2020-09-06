@@ -17,6 +17,24 @@ TextureImporter:
   - first:
       213: -8809284872407378732
     second: Laser
+  - first:
+      213: -4302619689401840662
+    second: Peashooter
+  - first:
+      213: -5183776757807708005
+    second: Splodey
+  - first:
+      213: 6404691848389292242
+    second: Dash
+  - first:
+      213: -3839707795870686628
+    second: Shotgun
+  - first:
+      213: 4645035644487611709
+    second: Laser
+  - first:
+      213: 7798176430303134427
+    second: Health
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -136,14 +154,14 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d94aeeb95ae54bcc0800000000000000
-      internalID: -3696225328785611619
+      spriteID: aeb0a9150360a44c0800000000000000
+      internalID: -4302619689401840662
       vertices: []
       indices: 
       edges: []
@@ -157,14 +175,14 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 80a98ebdab91c0690800000000000000
-      internalID: -7634698977955767800
+      spriteID: b9802fbe0868f08b0800000000000000
+      internalID: -5183776757807708005
       vertices: []
       indices: 
       edges: []
@@ -178,20 +196,20 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0ca7b937bb2257730800000000000000
-      internalID: 3996138432854981312
+      spriteID: 2d075177d4902e850800000000000000
+      internalID: 6404691848389292242
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spread
+      name: Shotgun
       rect:
         serializedVersion: 2
         x: 768
@@ -199,14 +217,14 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2f55e62873537990800000000000000
-      internalID: -7389470788071104723
+      spriteID: c5264d17a1e96bac0800000000000000
+      internalID: -3839707795870686628
       vertices: []
       indices: 
       edges: []
@@ -220,14 +238,35 @@ TextureImporter:
         width: 256
         height: 256
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d49fe605122fb580800000000000000
-      internalID: -8809284872407378732
+      spriteID: d3536b6ee4b767040800000000000000
+      internalID: 4645035644487611709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Health
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd2ca089520b83c60800000000000000
+      internalID: 7798176430303134427
       vertices: []
       indices: 
       edges: []

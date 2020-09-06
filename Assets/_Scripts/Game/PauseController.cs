@@ -32,10 +32,13 @@ namespace SantriptaSharma.Breakpoint.Game
             isPaused = false;
             fixedDeltaTime = Time.fixedDeltaTime;
             pausePanel.gameObject.SetActive(isPaused);
+            lastTimeScale = 1;
         }
 
         private void Update()
         {
+            if (OutcomeController.instance.outcomeReached) return;
+
             if(Input.GetKeyDown(KeyCode.Escape))
             {
                 Toggle();
@@ -43,7 +46,12 @@ namespace SantriptaSharma.Breakpoint.Game
 
             if(isPaused && Input.GetKeyDown(KeyCode.Backspace))
             {
-                SceneManager.LoadScene(0);
+                LevelController.instance.GoToMainMenu();
+            }
+
+            if(isPaused && Input.GetKeyDown(KeyCode.R))
+            {
+                LevelController.instance.ReloadLevel();
             }
         }
 

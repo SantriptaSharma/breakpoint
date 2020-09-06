@@ -109,7 +109,7 @@ namespace SantriptaSharma.Breakpoint.Game
 
         public float TakeDamage(float damage)
         {
-            if (Time.time - lastDamage <= 0.1f || !takingDamage) return health;
+            if (Time.time - lastDamage <= 0.05f || !takingDamage) return health;
 
             health -= damage;
             health = Mathf.Clamp(health, health, maxHealth);

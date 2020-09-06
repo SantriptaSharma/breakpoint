@@ -72,6 +72,7 @@ namespace SantriptaSharma.Breakpoint.Game
 
         public void Die(Entity e)
         {
+            OutcomeController.instance.PlayerDie();
         }
 
         public void Damaged(float damage, float health)

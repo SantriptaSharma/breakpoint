@@ -79,7 +79,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.18518518, y: 0.14814815}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -103,7 +103,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
-    newSize: {x: 0.18518518, y: 0.14814815}
+    newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   itemSprite: {fileID: 3996138432854981312, guid: bd6cefd9d8a6f9d4aad9dc702078c801,
     type: 3}
   type: 1
-  cooldown: 0.6
+  cooldown: 1.5
   dashType: 1
   forceMagnitude: 1600.63
   dashTime: 0.14
