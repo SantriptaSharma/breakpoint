@@ -11,8 +11,8 @@ namespace SantriptaSharma.Breakpoint.Game
 
         public float radius, settleRadius;
         public float timeToMoveMax;
+        public Camera cam;
 
-        private Camera cam;
         private float maxMoveDelta;
 
         public Vector3 MousePositionFromPlayerPOV()

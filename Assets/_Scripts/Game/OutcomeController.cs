@@ -16,12 +16,6 @@ namespace SantriptaSharma.Breakpoint.Game
         private int polygons;
         private bool win;
 
-        public void AddPolygon()
-        {
-            polygons++;
-            Debug.Log(polygons);
-        }
-
         public void RemovePolygon()
         {
             if(--polygons <= 0 && !outcomeReached) Win();
@@ -58,14 +52,21 @@ namespace SantriptaSharma.Breakpoint.Game
 
         void Start()
         {
-            polygons = 0;
+            polygons = FindObjectsOfType<PolygonBehaviour>().Length;
             outcomeReached = false;
             win = false;
             outcomePanel.gameObject.SetActive(false);
+            Debug.Log($"Polygons: {polygons}");
         }
 
         private void Update()
         {
+            if(Application.isEditor)
+            {
+                if (Input.GetKeyDown(KeyCode.LeftBracket)) Lose();
+                if (Input.GetKeyDown(KeyCode.RightBracket)) Win();
+            }
+
             if (!outcomeReached) return;
             
             if(win)

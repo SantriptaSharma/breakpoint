@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 489929650053162187}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 30.22, y: -32.94, z: -15.220317}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d863fd0e2689bc341bca30e905a993e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: -1.2
+  damage: -2.5
   dTag: 1
   knockbackAmount: 0
   takeTriggerDamage: 1
@@ -120,7 +120,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 7798176430303134427, guid: bd6cefd9d8a6f9d4aad9dc702078c801,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.38065743, g: 1, b: 0.3150943, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

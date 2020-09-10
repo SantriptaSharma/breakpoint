@@ -25,8 +25,6 @@ namespace SantriptaSharma.Breakpoint.Game
 
         private void Update()
         {
-            if (PauseController.isPaused) return;
-
             if (fade)
             {
                 Color c = spriteRenderer.color;

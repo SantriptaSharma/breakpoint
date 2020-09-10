@@ -403,6 +403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageTags: 01000000
+  startHealth: 3
   maxHealth: 3
   onEntityDied:
     m_PersistentCalls:

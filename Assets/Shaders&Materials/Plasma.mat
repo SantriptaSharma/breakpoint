@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WeaponGlow
-  m_Shader: {fileID: -6465566751694194690, guid: b28ad3ce5a6284c4a95cd61aa8c5f546,
+  m_Name: Plasma
+  m_Shader: {fileID: -6465566751694194690, guid: 9fab3d73cc817bf4984f424136adcf27,
     type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
@@ -25,7 +25,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 75acf805abed91245a453473d2c8d0e2, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
@@ -37,9 +37,13 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
+    - Vector1_7373D30E: 0
     - _EnableExternalAlpha: 0
+    - density: 2.57
+    - time: 234
     m_Colors:
-    - _Color: {r: 0.5676507, g: 0.5676507, b: 0.5676507, a: 1}
+    - Color_231C239B: {r: 17.005243, g: 8.814236, b: 8.814236, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -21,6 +22,7 @@ namespace SantriptaSharma.Breakpoint.Game
         public PauseEvent onResume;
 
         private float lastTimeScale, fixedDeltaTime;
+        private bool realPause;
 
         private void Awake()
         {
@@ -30,6 +32,7 @@ namespace SantriptaSharma.Breakpoint.Game
         private void Start()
         {
             isPaused = false;
+            realPause = false;
             fixedDeltaTime = Time.fixedDeltaTime;
             pausePanel.gameObject.SetActive(isPaused);
             lastTimeScale = 1;
@@ -44,12 +47,12 @@ namespace SantriptaSharma.Breakpoint.Game
                 Toggle();
             }
 
-            if(isPaused && Input.GetKeyDown(KeyCode.Backspace))
+            if(realPause && Input.GetKeyDown(KeyCode.Backspace))
             {
                 LevelController.instance.GoToMainMenu();
             }
 
-            if(isPaused && Input.GetKeyDown(KeyCode.R))
+            if(realPause && Input.GetKeyDown(KeyCode.R))
             {
                 LevelController.instance.ReloadLevel();
             }
@@ -65,6 +68,7 @@ namespace SantriptaSharma.Breakpoint.Game
                 Time.fixedDeltaTime = 0;
             }
 
+            realPause = true;
             isPaused = true;
             pausePanel.gameObject.SetActive(true);
         }
@@ -78,6 +82,7 @@ namespace SantriptaSharma.Breakpoint.Game
                 Time.fixedDeltaTime = fixedDeltaTime * lastTimeScale;
             }
 
+            realPause = false;
             isPaused = false;
             pausePanel.gameObject.SetActive(false);
         }
@@ -89,6 +94,7 @@ namespace SantriptaSharma.Breakpoint.Game
 
         public void Toggle()
         {
+            if (isPaused && !realPause) isPaused = false;
             if (isPaused) Resume(); else Pause();
         }
     }

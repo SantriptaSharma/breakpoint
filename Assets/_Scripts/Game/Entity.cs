@@ -16,6 +16,7 @@ namespace SantriptaSharma.Breakpoint.Game
     public class Entity : MonoBehaviour
     {
         public DamageTag[] damageTags;
+        public float startHealth;
         public float maxHealth;
         public EntityDeathEvent onEntityDied;
         public DamageEvent onTakeDamage;
@@ -29,7 +30,7 @@ namespace SantriptaSharma.Breakpoint.Game
 
         private void Start()
         {
-            health = maxHealth;
+            health = startHealth;
             lastDamage = -100;
             lastDir = Vector3.zero;
             rb = GetComponent<Rigidbody2D>();

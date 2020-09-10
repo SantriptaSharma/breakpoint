@@ -166,6 +166,11 @@ namespace SantriptaSharma.Breakpoint.Polygons
             points[0].GetComponent<SpringJoint2D>().connectedBody = point.GetComponent<Rigidbody2D>();
         }
 
+        public void DestroyRn()
+        {
+            Destroy(gameObject);
+        }
+
         public void Kill()
         {
             onDie.Invoke(this);

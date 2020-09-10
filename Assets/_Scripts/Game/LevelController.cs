@@ -26,6 +26,12 @@ public class LevelController : MonoBehaviour
     {
         levelCount += 1;
         currentLevel = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.activeSceneChanged += SceneChanged;
+    }
+
+    private void SceneChanged(Scene a, Scene b)
+    {
+        Debug.Log($"Scene changed. Current scene: {currentLevel}");
     }
 
     public void GoToNextLevel()
@@ -35,14 +41,14 @@ public class LevelController : MonoBehaviour
             GoToMainMenu();
             return;
         }
-
+        
         SceneManager.LoadScene(++currentLevel);
     }
 
     public void GoToMainMenu()
     {
         currentLevel = 0;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(currentLevel);
     }
 
     public void ReloadLevel()

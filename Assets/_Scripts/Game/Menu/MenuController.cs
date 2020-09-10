@@ -66,7 +66,7 @@ namespace SantriptaSharma.Breakpoint.Game
 
         public void Init()
         {
-            SceneManager.LoadScene(1);   
+            LevelController.instance.GoToNextLevel();
         }
 
         public void Break()

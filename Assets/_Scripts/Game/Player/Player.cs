@@ -32,7 +32,8 @@ namespace SantriptaSharma.Breakpoint.Game
         private Item power;
         private bool constrainVelocity;
         private float currentIntensity, intensityPerDamage;
-        
+        private float startFdt;
+
         private UIController ui;
 
         public Vector2 aimDirection { get { return targetorAxis.transform.right; } }
@@ -67,6 +68,7 @@ namespace SantriptaSharma.Breakpoint.Game
             float factor = currentIntensity;
             renderer.sharedMaterial.SetColor("_Color", new Color(0x16 * factor, 0xdf * factor, 0x05 * factor));
 
+            startFdt = Time.fixedDeltaTime;
             ui = UIController.instance;
         }
 
@@ -77,15 +79,53 @@ namespace SantriptaSharma.Breakpoint.Game
 
         public void Damaged(float damage, float health)
         {
+            if (damage > 0)
+            {
+                cam.DoScreenShake(0.1f, 1, 2);
+                StartCoroutine(FreezeFrame(0.2f, 0f, 0.05f, 0.6f));
+            }
+            else
+            {
+                StartCoroutine(FreezeFrame(0.1f, 0.5f, 0.05f, 0.2f));
+            }
+
             if (health < 0) return;
             currentIntensity = intensityStart - intensityPerDamage * (entity.maxHealth - health);
             float factor = currentIntensity;
             renderer.material.SetColor("_Color", new Color(0x16 * factor, 0xdf * factor, 0x05 * factor));
         }
 
+        public IEnumerator FreezeFrame(float time, float timeScale = 0, float delay = 0.05f, float fovReduction = 0.3f)
+        {
+            yield return new WaitForSecondsRealtime(delay);
+            float fov = cam.cam.orthographicSize;
+            StartCoroutine(ChangeFov(fov - fovReduction, time / 1.4f, 20));
+            PauseController.isPaused = true;
+            Time.timeScale = timeScale;
+            Time.fixedDeltaTime = startFdt * timeScale;
+            yield return new WaitForSecondsRealtime(time);
+            PauseController.isPaused = false;
+            StartCoroutine(ChangeFov(fov, time / 8, 20));
+            Time.timeScale = 1;
+            Time.fixedDeltaTime = startFdt;
+        }
+
+        public IEnumerator ChangeFov(float newFov, float time = 0.2f, float steps = 3)
+        {
+            float fov = cam.cam.orthographicSize;
+            float diff = Mathf.Abs(newFov - fov);
+            float deltaPerStep = diff / steps, timePerStep = time / steps;
+
+            for(int i = 0; i < steps; i++)
+            {
+                cam.cam.orthographicSize = Mathf.MoveTowards(cam.cam.orthographicSize, newFov, deltaPerStep);
+                yield return new WaitForSecondsRealtime(timePerStep);
+            }
+        }
+
         void Update()
         {
-            if (PauseController.isPaused) return;
+            if (PauseController.isPaused || OutcomeController.instance.outcomeReached) return;
 
             targetDirection.Set(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0);
             targetDirection.Normalize();

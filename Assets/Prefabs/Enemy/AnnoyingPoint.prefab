@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 2709908987425732840}
   - component: {fileID: -2919410337876933205}
   m_Layer: 8
-  m_Name: HomingPoint
+  m_Name: AnnoyingPoint
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 75acf805abed91245a453473d2c8d0e2, type: 3}
-  m_Color: {r: 0.37169808, g: 0.69342226, b: 1, a: 1}
+  m_Color: {r: 0.17386968, g: 0.6981132, b: 0.5133279, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -173,10 +173,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea3ee297c8edbc14bb9dd77829674c47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootCooldown: 2.4
+  shootCooldown: 2
   firstShotOffset: 0
-  homing: 1
-  bullet: {fileID: 7991166996671669684, guid: 7f4649d7e1a3f434c87b4f14459c7eb1, type: 3}
+  homing: 0
+  bullet: {fileID: 7991166996671669684, guid: 33127424ef24cef429a242ffaca09a6a, type: 3}
   bulletVelocity: 25
   bulletLiveTime: 8
   kickForce: 80
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageTags: 00000000
-  maxHealth: 1.6
+  maxHealth: 1
   onEntityDied:
     m_PersistentCalls:
       m_Calls: []
