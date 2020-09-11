@@ -39,8 +39,7 @@ namespace SantriptaSharma.Breakpoint.Game
                 if ((playerPos - myPos).sqrMagnitude <= squaredActivationRadius)
                 {
                     onActivate.Invoke();
-                    StopAllCoroutines();
-                    break;
+                    Debug.Log("activated");
                 }
                 yield return new WaitForSeconds(updateDelay);
             }

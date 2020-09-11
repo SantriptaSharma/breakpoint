@@ -213,7 +213,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 3.76
   settleRadius: 0.05
+  transitionOrthSize: 0.001
   timeToMoveMax: 0.4
+  cam: {fileID: 0}
 --- !u!114 &1400615579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,7 +370,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &40075601
 MonoBehaviour:

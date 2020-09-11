@@ -211,6 +211,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageTags: 00000000
+  startHealth: 1
   maxHealth: 1
   onEntityDied:
     m_PersistentCalls:

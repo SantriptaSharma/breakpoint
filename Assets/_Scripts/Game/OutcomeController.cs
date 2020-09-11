@@ -73,14 +73,14 @@ namespace SantriptaSharma.Breakpoint.Game
             {
                 if(Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
                 {
-                    LevelController.instance.GoToNextLevel();
+                    LevelController.instance.TransitionAndNext();
                 }
             }
             else
             {
                 if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
                 {
-                    LevelController.instance.ReloadLevel();
+                    LevelController.instance.TransitionAndRe();
                 }
             }
         }

@@ -8,6 +8,7 @@ namespace SantriptaSharma.Breakpoint.Game
     public class ShootingActivated : ShootingBehaviourHook
     {
         List<PointShooter> shooters;
+        bool prevActivated = false;
 
         protected override void Modify(PolygonalPoint[] points)
         {
@@ -22,6 +23,9 @@ namespace SantriptaSharma.Breakpoint.Game
 
         public void OnActivate()
         {
+            if (prevActivated) return;
+ 
+            prevActivated = true;
             for(int i = 0; i < shooters.Count; i++)
             {
                 shooters[i].shootingEnabled = true;

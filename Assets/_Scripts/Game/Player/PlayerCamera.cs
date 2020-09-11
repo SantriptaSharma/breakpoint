@@ -9,11 +9,11 @@ namespace SantriptaSharma.Breakpoint.Game
     {
         public static PlayerCamera instance = null;
 
-        public float radius, settleRadius;
+        public float radius, settleRadius, transitionOrthSize;
         public float timeToMoveMax;
         public Camera cam;
 
-        private float maxMoveDelta;
+        private float maxMoveDelta, initialOrthSize;
 
         public Vector3 MousePositionFromPlayerPOV()
         {
@@ -32,10 +32,36 @@ namespace SantriptaSharma.Breakpoint.Game
             instance = this;
         }
 
+        private void OnDestroy()
+        {
+            instance = null;
+        }
+
         void Start()
         {
             cam = GetComponent<Camera>();
             maxMoveDelta = radius / timeToMoveMax;
+            initialOrthSize = cam.orthographicSize;
+            cam.orthographicSize = transitionOrthSize;
+            StartCoroutine(ChangeFov(initialOrthSize, 0.2f, 100));
+        }
+
+        public IEnumerator ChangeFov(float newFov, float time = 0.2f, float steps = 10)
+        {
+            float fov = cam.orthographicSize;
+            float diff = Mathf.Abs(newFov - fov);
+            float deltaPerStep = diff / steps, timePerStep = time / steps;
+
+            for (int i = 0; i < steps; i++)
+            {
+                cam.orthographicSize = Mathf.MoveTowards(cam.orthographicSize, newFov, deltaPerStep);
+                yield return new WaitForSecondsRealtime(timePerStep);
+            }
+        }
+
+        public void LevelEnd(float time)
+        {
+            StartCoroutine(ChangeFov(transitionOrthSize, time, 100));
         }
 
         void Update()

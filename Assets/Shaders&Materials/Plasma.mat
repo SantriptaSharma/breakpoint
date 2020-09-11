@@ -39,7 +39,7 @@ Material:
     m_Floats:
     - Vector1_7373D30E: 0
     - _EnableExternalAlpha: 0
-    - density: 2.57
+    - density: 1.28
     - time: 234
     m_Colors:
     - Color_231C239B: {r: 17.005243, g: 8.814236, b: 8.814236, a: 0}

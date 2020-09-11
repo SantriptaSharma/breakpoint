@@ -110,7 +110,7 @@ namespace SantriptaSharma.Breakpoint.Game
             Time.fixedDeltaTime = startFdt;
         }
 
-        public IEnumerator ChangeFov(float newFov, float time = 0.2f, float steps = 3)
+        public IEnumerator ChangeFov(float newFov, float time = 0.2f, float steps = 10)
         {
             float fov = cam.cam.orthographicSize;
             float diff = Mathf.Abs(newFov - fov);

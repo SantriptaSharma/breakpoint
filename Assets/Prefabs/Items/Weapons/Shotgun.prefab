@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8994916549410751073}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.2, y: -2.63, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -126,7 +126,7 @@ MonoBehaviour:
   itemSprite: {fileID: -3839707795870686628, guid: bd6cefd9d8a6f9d4aad9dc702078c801,
     type: 3}
   type: 0
-  cooldown: 0.6
+  cooldown: 0.84
   projectile: {fileID: 7991166996671669684, guid: 7cf7d582832b37c4ba41dba3c5a45939,
     type: 3}
   shootVelocity: 18

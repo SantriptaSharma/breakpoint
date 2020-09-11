@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using SantriptaSharma.Breakpoint.Game;
 
 public class LevelController : MonoBehaviour
 {
@@ -32,6 +33,23 @@ public class LevelController : MonoBehaviour
     private void SceneChanged(Scene a, Scene b)
     {
         Debug.Log($"Scene changed. Current scene: {currentLevel}");
+    }
+
+    private IEnumerator TransitionAndGo(bool next)
+    {
+        PlayerCamera.instance.LevelEnd(0.2f);
+        yield return new WaitForSecondsRealtime(0.2f);
+        if (next) GoToNextLevel(); else ReloadLevel();
+    }
+
+    public void TransitionAndNext()
+    {
+        StartCoroutine(TransitionAndGo(true));
+    }
+
+    public void TransitionAndRe()
+    {
+        StartCoroutine(TransitionAndGo(false));
     }
 
     public void GoToNextLevel()
